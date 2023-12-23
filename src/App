@@ -1,0 +1,83 @@
+<?php
+
+namespace App;
+
+class MagicClass
+{
+    public function __construct() {
+        echo METHOD . "\n";
+    }
+
+    public function __destruct() {
+        echo METHOD . "\n";
+    }
+
+    public function __call($name, $arguments) {
+        echo METHOD . "\n";
+    }
+
+    public static function __callStatic($name, $arguments) {
+        echo METHOD . "\n";
+    }
+
+    public function __get($name) {
+        echo METHOD . "\n";
+    }
+
+    public function __set($name, $value) {
+        echo METHOD . "\n";
+    }
+
+    public function __isset($name) {
+        echo METHOD . "\n";
+    }
+
+    public function __unset($name) {
+        echo METHOD . "\n";
+    }
+
+    public function __sleep() {
+        echo METHOD . "\n";
+        return array_keys(get_object_vars($this));
+    }
+
+    public function __wakeup() {
+        echo METHOD . "\n";
+    }
+
+    public function __serialize(): array {
+        echo METHOD . "\n";
+        return get_object_vars($this);
+    }
+
+    public function __unserialize(array $data): void {
+        foreach ($data as $key => $value) {
+            $this->$key = $value;
+        }
+        echo METHOD . "\n";
+    }
+
+    public function __toString() {
+        echo METHOD . "\n";
+        return get_class($this);
+    }
+
+    public function __invoke() {
+        echo METHOD . "\n";
+    }
+
+    public function __set_state($an_array) {
+        echo METHOD . "\n";
+        return new self;
+    }
+
+    public function __clone() {
+        echo METHOD . "\n";
+    }
+
+    public function __debugInfo() {
+        echo METHOD . "\n";
+        return get_object_vars($this);
+    }
+}
+?>
